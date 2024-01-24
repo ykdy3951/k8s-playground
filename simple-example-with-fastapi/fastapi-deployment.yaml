@@ -1,0 +1,19 @@
+apiVersion: apps/v1                # API version
+kind: Deployment                   # Kind of object
+metadata:
+  name: fastapi-replication        # Name of the deployment
+spec:
+  replicas: 3                      # Number of replicas
+  selector:
+    matchLabels:
+      app: fastapi-replication     # Label to match
+  template:
+    metadata:
+      labels:
+        app: fastapi-replication   # Label to match
+    spec:
+      containers:
+      - name: fastapi-replication
+        image: chanism/fastapi_example:0.1 # Image name
+        ports:
+        - containerPort: 8000
